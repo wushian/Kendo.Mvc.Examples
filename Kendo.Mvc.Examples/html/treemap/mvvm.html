@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MVVM</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+    <div id="example">
+    <div class="demo-section k-header" style="padding: 1em;">
+        <div>
+            <div data-role="treemap"
+                 data-text-field="name"
+                 data-value-field="value"
+                 data-bind="
+                    source: populationUSA,
+                    events: { dataBound: onDataBound }"
+                 style="height: 600px;">
+            </div>
+        </div>
+        </br>
+        <div>
+            <h4>Console</h4>
+            <div class="console"></div>
+        </div>
+    </div>
+    <script>
+        function treeMap() {
+            var viewModel = kendo.observable({
+                onDataBound: function (e) {
+                    kendoConsole.log("Data Bound");
+                },
+                populationUSA: new kendo.data.HierarchicalDataSource({
+                    transport: {
+                        read: {
+                            url: "../content/dataviz/js/population-usa.json",
+                            dataType: "json"
+                        }
+                    },
+                    schema: {
+                        model: {
+                            children: "items"
+                        }
+                    }
+                })
+            });
+            kendo.bind($("#example"), viewModel);
+        }
+
+        $(document).ready(treeMap)
+    </script>
+</div>
+
+
+    
+</body>
+</html>

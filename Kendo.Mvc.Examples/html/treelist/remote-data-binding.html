@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Binding to remote data</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+            <div id="example">
+            <div id="treelist"></div>
+
+            <script>
+                $(document).ready(function () {
+                    var crudServiceBaseUrl = "http://demos.telerik.com/kendo-ui/service";
+
+                    var dataSource = new kendo.data.TreeListDataSource({
+                            transport: {
+                                read: {
+                                    url: crudServiceBaseUrl + "/EmployeeDirectory",
+                                    dataType: "jsonp"
+                                }
+                            },
+                            schema: {
+                                model: {
+                                    id: "EmployeeId",
+                                    fields: {
+                                        EmployeeId: { type: "number", nullable: false },
+                                        parentId: { field: "ReportsTo", nullable: true }
+                                    }
+                                }
+                            }
+                        });
+
+                    $("#treelist").kendoTreeList({
+                        dataSource: dataSource,
+                        columns: [
+                            { field: "FirstName", expandable: true, title: "First Name", width: 250 },
+                            { field: "LastName", title: "Last Name" },
+                            { field: "Position" },
+                            { field: "Extension", title: "Ext", format: "{0:#}" }
+                        ]
+                    });
+                });
+            </script>
+        </div>
+
+
+
+    
+</body>
+</html>

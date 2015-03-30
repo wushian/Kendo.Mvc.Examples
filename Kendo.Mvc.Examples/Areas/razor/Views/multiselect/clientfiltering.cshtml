@@ -1,0 +1,23 @@
+<div class="demo-section">
+    <h3 class="title">Select Products</h3>
+
+    @(Html.Kendo().MultiSelect()
+          .Name("products")
+          .DataTextField("ProductName")
+          .DataValueField("ProductID")
+          .Placeholder("Select products...")
+          .DataSource(source => {
+              source.Read(read =>
+              {
+                  read.Action("GetProducts", "Home");
+              })
+              .ServerFiltering(false);
+          })
+    )
+</div>
+<style>
+    .demo-section {
+        width: 450px;
+        margin-top: 40px;
+    }
+</style>

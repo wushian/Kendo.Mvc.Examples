@@ -1,0 +1,29 @@
+﻿@{    
+    Layout = "~/Areas/razor/Views/Shared/_MobileLayout.cshtml";
+}
+
+@(Html.Kendo().MobileView()
+    .Name("collapsible-events")        
+    .Title("Collapsible Events")
+    .Content(
+        @<text>          
+            @(Html.Kendo().MobileCollapsible()
+                .Header("Collapsible header")
+                .Content("Collapsible Content")
+                .Events(e => e.Collapse("onCollapse").Expand("onExpand"))
+            )
+
+            <div class="console" style="min-width: 200px;"></div>
+        </text>
+    )
+)
+
+<script>
+    function onCollapse(e) {
+        kendoConsole.log("collapse");
+    }
+
+    function onExpand(e) {
+        kendoConsole.log("expand");
+    }
+</script>

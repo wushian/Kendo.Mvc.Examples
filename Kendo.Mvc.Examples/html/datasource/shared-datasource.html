@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shared DataSource</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+            <div id="example">
+            <div class="demo-section k-header">
+                <div>
+                    <h4>Products</h4>
+                    <div class="section-box">
+                        <label for="productName">Select product name: </label>
+                        <input id="productName" name="productName" style="width:300px;" />
+                    </div>
+                </div>                
+                 <div id="grid"></div>
+            </div>
+
+            <style>
+                
+                #grid 
+                {
+                    margin-top: 10px;
+                }
+                
+                .section-box {
+                    margin-top: 20px;
+                    padding: 10px;
+                    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.45), inset 0 0 30px rgba(0,0,0,0.07);
+                    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.45), inset 0 0 30px rgba(0,0,0,0.07);
+                    box-shadow: 0 1px 2px rgba(0,0,0,0.45), inset 0 0 30px rgba(0,0,0,0.07);
+                    -webkit-border-radius: 8px;
+                    -moz-border-radius: 8px;
+                    border-radius: 8px;                    
+                }       
+                                  
+            </style>
+
+            <script>
+               $(function () {
+                    var productsDataSource = new kendo.data.DataSource({
+                            type: "odata",
+                            serverFiltering: true,
+                            serverPaging: true,
+                            serverSorting: true,
+                            pageSize: 10,
+                            transport: {
+                                read: "http://demos.telerik.com/kendo-ui/service/Northwind.svc/Products"
+                            },
+                    });   
+
+                    productsDataSource.read();
+
+                    $("#productName").kendoAutoComplete({
+                        autoBind: false,
+                        dataSource: productsDataSource,
+                        dataTextField: "ProductName",
+                        filter: "contains",
+                        minLength: 2                                                        
+                    });
+                    
+                    $("#grid").kendoGrid({
+                        dataSource: productsDataSource,
+                        autoBind: false,
+                        pageable: true,
+                        height: 300,
+                        selectable: true,
+                        columns: [
+                            {field: "ProductName", title: "ProductName"},
+                            { field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "100px" },
+                            { field: "UnitsInStock", title:"Units In Stock", width: "100px" },
+                            { field: "Discontinued", width: "100px" }
+                        ]
+                    });                                                                         
+                });
+
+            </script>
+        </div>
+
+
+    
+</body>
+</html>

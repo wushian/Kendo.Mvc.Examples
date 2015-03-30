@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+    <div id="example">
+    <div class="demo-section k-header" style="padding: 1em;">
+        <div id="treeMap" style="height: 600px; font-size: 12px;"></div>
+    </div>
+    <script>
+        function treeMap() {
+            $("#treeMap").kendoTreeMap({
+                dataSource: {
+                    transport: {
+                        read: {
+                            url: "../content/dataviz/js/population-usa.json",
+                            dataType: "json"
+                        }
+                    },
+                    schema: {
+                        model: {
+                            children: "items"
+                        }
+                    }
+                },
+                valueField: "value",
+                textField: "name",
+                dataBound: onDataBound,
+                itemCreated: onItemCreated
+            });
+
+            function onDataBound(e) {
+                kendoConsole.log("Data bound");
+            }
+
+            function onItemCreated(e) {
+                kendoConsole.log("Item is created");
+            }
+        }
+
+        $(document).ready(treeMap);
+        $(document).bind("kendo:skinChange", treeMap);
+    </script>
+    <div class="demo-section">
+        <h4>Console log</h4>
+        <div class="console"></div>
+    </div>
+</div>
+
+
+    
+</body>
+</html>

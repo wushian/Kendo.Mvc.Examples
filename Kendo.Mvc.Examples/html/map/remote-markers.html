@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Binding markers to remote data</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+    <div id="example">
+    <div class="demo-section k-header" style="padding: 1em;">
+        <div id="map"></div>
+    </div>
+    <script>
+        function createMap() {
+            $("#map").kendoMap({
+                center: [30.268107, -97.744821],
+                zoom: 15,
+                layers: [{
+                    type: "tile",
+                    urlTemplate: "http://#= subdomain #.tile2.opencyclemap.org/transport/#= zoom #/#= x #/#= y #.png",
+                    subdomains: ["a", "b", "c"],
+                    attribution: "&copy; <a href='http://osm.org/copyright'>OpenStreetMap contributors</a>." +
+                                 "Tiles courtesy of <a href='http://www.opencyclemap.org/'>Andy Allan</a>"
+                }, {
+                    type: "marker",
+                    dataSource: {
+                        transport: {
+                            read: {
+                                url: "../content/dataviz/map/store-locations.json",
+                                dataType: "json"
+                            }
+                        }
+                    },
+                    locationField: "latlng",
+                    titleField: "name"
+                }]
+            });
+        }
+
+        $(document).ready(createMap);
+    </script>
+</div>
+
+
+    
+</body>
+</html>

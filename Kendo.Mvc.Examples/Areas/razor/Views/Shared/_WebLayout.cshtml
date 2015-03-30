@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/kendo/css")
+    @Styles.Render("~/Content/shared/css")
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/demo")
+
+    @* Include the JavaScript for the current culture *@
+    @{ var culture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString(); }
+    <script src="@Url.Content("~/Scripts/cultures/kendo.culture." + culture + ".min.js")"></script>
+
+    @* Set the current culture *@
+    <script>
+        kendo.culture("@culture");
+    </script>
+
+    @RenderSection("HeadContent", false)
+</head>
+<body>
+    <div class="page">
+        @Html.Partial("~/Views/Shared/_Navigation.cshtml")
+
+        <div id="example" class="k-content">
+            @RenderBody()
+        </div>
+
+        @Html.Partial("~/Views/Shared/_Source.cshtml")
+
+    </div>
+</body>
+</html>

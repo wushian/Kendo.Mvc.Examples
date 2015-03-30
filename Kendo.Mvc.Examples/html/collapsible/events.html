@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <link href="../../content/mobile/kendo.mobile.all.min.css" rel="stylesheet" />
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+    <div data-role="view">
+    <div data-role="collapsible" data-collapse="onCollapse" data-expand="onExpand">
+        <h2>Collapsible header</h3>
+        <p>Collapsible content</p>
+    </div>
+
+    <div class="console" style="min-width: 200px;"></div>
+</div>
+
+<script>
+    function onCollapse() {
+        kendoConsole.log("collapse");
+    }
+
+    function onExpand() {
+        kendoConsole.log("expand");
+    }
+</script>
+
+
+    
+    <script>
+        window.kendoMobileApplication = new kendo.mobile.Application(document.body);
+    </script>
+    
+</body>
+</html>

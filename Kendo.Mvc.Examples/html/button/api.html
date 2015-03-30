@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+    
+        <div id="example">
+
+            <div class="box">
+                <div class="box-col">
+                    <h4>Button API Functions</h4>
+                    <ul class="options">
+                        <li>
+                            <button class="k-button" id="enableButton" type="button">Enable</button>
+                            <button class="k-button" id="disableButton" type="button">Disable</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="demo-section k-header">
+                <button id="iconTextButton">Kendo UI Button</button>
+            </div>
+
+            <script>
+                $(document).ready(function() {
+                    var buttonObject = $("#iconTextButton").kendoButton({
+                        icon: "ungroup"
+                    }).data("kendoButton");
+
+
+                    $("#enableButton").click(function(){
+                        buttonObject.enable(true);
+                    });
+
+                    $("#disableButton").click(function(){
+                        buttonObject.enable(false);
+                    });
+                });
+            </script>
+            
+            <style>
+                .demo-section {
+                    width: 400px;
+                    text-align: center;
+                }
+                .box .k-textbox {
+                    margin: 0;
+                    width: 80px;
+                }
+            </style>
+        </div>
+
+    
+</body>
+</html>

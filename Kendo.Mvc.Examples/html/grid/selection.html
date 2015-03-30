@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selection</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+            <script src="../content/shared/js/orders.js"></script>
+
+        <div id="example">
+
+            <div class="demo-section k-header">
+                <h4>Grid with multiple row selection enabled</h4>
+                <div id="rowSelection"></div>
+            </div>
+
+            <div class="demo-section k-header">
+                <h4>Grid with multiple cell selection enabled</h4>
+                <div id="cellSelection"></div>
+            </div>
+
+            <script>
+                $(document).ready(function () {
+                    $("#rowSelection").kendoGrid({
+                        dataSource: {
+                            data: orders,
+                            pageSize: 6
+                        },
+                        selectable: "multiple",
+                        pageable: {
+                            buttonCount: 5
+                        },
+                        scrollable: false,
+                        navigatable: true,
+                        columns: [
+                            {
+                                field: "ShipCountry",
+                                title: "Ship Country",
+                                width: 300
+                            },
+                            {
+                                field: "Freight",
+                                width: 300
+                            },
+                            {
+                                field: "OrderDate",
+                                title: "Order Date",
+                                format: "{0:dd/MM/yyyy}"
+                            }
+                        ]
+                    });
+
+                    $("#cellSelection").kendoGrid({
+                        dataSource: {
+                            data: orders,
+                            pageSize: 6
+                        },
+                        selectable: "multiple cell",
+                        pageable: {
+                            buttonCount: 5
+                        },
+                        scrollable: false,
+                        navigatable: true,
+                        columns: [
+                            {
+                                field: "ShipCountry",
+                                title: "Ship Country",
+                                width: 300
+                            },
+                            {
+                                field: "Freight",
+                                width: 300
+                            },
+                            {
+                                field: "OrderDate",
+                                title: "Order Date",
+                                format: "{0:dd/MM/yyyy}"
+                            }
+                        ]
+                    });
+                });
+            </script>
+        </div>
+
+
+    
+</body>
+</html>

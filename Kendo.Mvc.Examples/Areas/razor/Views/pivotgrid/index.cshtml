@@ -1,0 +1,57 @@
+﻿@(Html.Kendo().PivotConfigurator()
+    .Name("configurator")
+    .Filterable(true)
+    .Sortable()
+    .Height(570)
+)
+
+@(Html.Kendo().PivotGrid()
+    .Name("pivotgrid")
+    .ColumnWidth(200)
+    .Height(570)
+    .Filterable(true)
+    .Sortable()
+    .Configurator("#configurator")
+    .DataSource(dataSource => dataSource.
+        Xmla()
+        .Columns(columns => {
+            columns.Add("[Date].[Calendar]").Expand(true);
+            columns.Add("[Product].[Category]");
+        })
+        .Rows(rows => rows.Add("[Geography].[City]"))
+        .Measures(measures => measures.Values(new string[]{"[Measures].[Reseller Freight Cost]"}))
+        .Transport(transport => transport
+            .Connection(connection => connection
+                .Catalog("Adventure Works DW 2008R2")
+                .Cube("Adventure Works"))
+            .Read(read => read
+                .Url("http://demos.telerik.com/olap/msmdpump.dll")
+                .DataType("text")
+                .ContentType("text/xml")
+                .Type(HttpVerbs.Post) 
+            )
+        )
+        .Events(e => e.Error("onError"))
+    )
+)
+
+<script>
+    function onError(e) {
+        alert("error: " + kendo.stringify(e.errors[0]));
+    }
+</script>
+
+ <style>
+    #pivotgrid
+    {
+        display: inline-block;
+        vertical-align: top;
+        width: 70%;
+    }
+
+    #configurator
+    {
+        display: inline-block;
+        vertical-align: top;        
+    }
+</style>

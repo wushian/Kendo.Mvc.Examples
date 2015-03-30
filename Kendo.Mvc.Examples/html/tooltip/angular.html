@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+    <div id="example" ng-app="KendoDemos">
+    <div ng-controller="MyCtrl">
+        <div kendo-tooltip k-content="'The <b>tooltip</b><br />Time is: {{time}}'" class="k-group">
+            I have a tooltip.
+        </div>
+
+        <div kendo-tooltip k-content="theContent" class="k-group">
+            I also have a tooltip.
+        </div>
+
+        <style>
+                .k-group {
+                    display: inline-block;
+                    text-align: center;
+                    width: 200px;
+                    white-space: nowrap;
+                    border-width: 1px;
+                    border-style: solid;
+                    padding: 2em;
+                    margin: 10px;
+                }
+            </style>
+    </div>
+</div>
+
+<script>
+    angular.module("KendoDemos", [ "kendo.directives" ])
+        .controller("MyCtrl", function($scope, $timeout){
+            function updateTime() {
+                $scope.time = kendo.toString(new Date(), "H:mm:ss.fff tt");
+                $timeout(updateTime, 78);
+            };
+            $scope.theContent = "The <b>tooltip</b><br />Time is: {{time}}";
+            updateTime();
+        })
+</script>
+
+
+    
+</body>
+</html>

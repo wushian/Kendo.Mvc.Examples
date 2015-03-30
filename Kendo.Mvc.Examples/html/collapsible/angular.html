@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <link href="../../content/mobile/kendo.mobile.all.min.css" rel="stylesheet" />
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+    <div kendo-mobile-application ng-app="kendoDemo">
+     <kendo-mobile-view ng-controller="MyCtrl">
+        <div class="head">&nbsp;</div>
+
+        <kendo-mobile-collapsible k-options="collapsibleOptions">
+            <h2>Collapsible Header</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id lorem auctor, luctus urna non, viverra magna. Nulla facilisi. Curabitur accumsan auctor mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec luctus massa non ante luctus volutpat.</p>
+        </kendo-mobile-collapsible>
+    </kendo-mobile-view>
+</div>
+
+<script>
+    angular.module("kendoDemo", [ "kendo.directives" ]).controller("MyCtrl", function($scope) {
+
+      $scope.collapsibleOptions = {
+          animation: false
+      };
+   });
+</script>
+
+
+    
+    <script>
+        window.kendoMobileApplication = new kendo.mobile.Application(document.body);
+    </script>
+    
+</body>
+</html>

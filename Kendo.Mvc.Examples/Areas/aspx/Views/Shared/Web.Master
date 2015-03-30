@@ -1,0 +1,34 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <%: Styles.Render("~/Content/kendo/css") %>
+    <%: Styles.Render("~/Content/shared/css") %>
+    
+    <%: Scripts.Render("~/bundles/jquery") %>
+    <%: Scripts.Render("~/bundles/kendo") %>
+    <%: Scripts.Render("~/bundles/demo") %>
+
+    <%-- Include the JavaScript for the current culture --%>
+    <% var culture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString(); %>
+    <script src="<%= Url.Content("~/Scripts/cultures/kendo.culture." + culture + ".min.js") %>"></script>
+
+    <%-- Set the current culture --%>
+    <script>
+        kendo.culture("<%= culture %>");
+    </script>
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body>
+    <div class="page">
+        <%= Html.Partial("~/Views/Shared/_Navigation.cshtml")%>
+
+        <div id="example" class="k-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <%= Html.Partial("~/Views/Shared/_Source.cshtml") %>
+    </div>
+</body>
+</html>

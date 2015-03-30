@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading content with AJAX</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+    
+        <div id="example">
+            <div id="splitter">
+                <div></div>
+                <div></div>
+            </div>
+
+            <script>
+                $(document).ready(function() {
+                    $("#splitter").kendoSplitter({
+                        panes: [
+                            { contentUrl: '../content/web/splitter/ajax/ajaxContent1.html' },
+                            { contentUrl: '../content/web/splitter/ajax/ajaxContent2.html' }
+                        ]
+                    });
+                });
+            </script>
+
+        </div>
+
+
+    
+</body>
+</html>

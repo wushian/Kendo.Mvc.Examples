@@ -1,0 +1,638 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SampleModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SampleEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="SampleModel.Category" />
+    <EntitySet Name="CustomerDemographics" EntityType="SampleModel.CustomerDemographic" />
+    <EntitySet Name="Customers" EntityType="SampleModel.Customer" />
+    <EntitySet Name="Employees" EntityType="SampleModel.Employee" />
+    <EntitySet Name="Intradays" EntityType="SampleModel.Intraday" />
+    <EntitySet Name="MeetingAttendees" EntityType="SampleModel.MeetingAttendee" />
+    <EntitySet Name="Meetings" EntityType="SampleModel.Meeting" />
+    <EntitySet Name="Order_Details" EntityType="SampleModel.Order_Detail" />
+    <EntitySet Name="Orders" EntityType="SampleModel.Order" />
+    <EntitySet Name="Products" EntityType="SampleModel.Product" />
+    <EntitySet Name="Regions" EntityType="SampleModel.Region" />
+    <EntitySet Name="Shippers" EntityType="SampleModel.Shipper" />
+    <EntitySet Name="Suppliers" EntityType="SampleModel.Supplier" />
+    <EntitySet Name="Tasks" EntityType="SampleModel.Task" />
+    <EntitySet Name="Territories" EntityType="SampleModel.Territory" />
+    <EntitySet Name="Weathers" EntityType="SampleModel.Weather" />
+    <AssociationSet Name="FK_Products_Categories" Association="SampleModel.FK_Products_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Customers" Association="SampleModel.FK_Orders_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Employees" Association="SampleModel.FK_Employees_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Employees1" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Employees" Association="SampleModel.FK_Orders_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MeetingAttendee_Meeting" Association="SampleModel.FK_MeetingAttendee_Meeting">
+      <End Role="Meetings" EntitySet="Meetings" />
+      <End Role="MeetingAttendees" EntitySet="MeetingAttendees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meetings_Meetings" Association="SampleModel.FK_Meetings_Meetings">
+      <End Role="Meetings" EntitySet="Meetings" />
+      <End Role="Meetings1" EntitySet="Meetings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Details_Orders" Association="SampleModel.FK_Order_Details_Orders">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="Order_Details" EntitySet="Order_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Details_Products" Association="SampleModel.FK_Order_Details_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Order_Details" EntitySet="Order_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Shippers" Association="SampleModel.FK_Orders_Shippers">
+      <End Role="Shippers" EntitySet="Shippers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Suppliers" Association="SampleModel.FK_Products_Suppliers">
+      <End Role="Suppliers" EntitySet="Suppliers" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territories_Region" Association="SampleModel.FK_Territories_Region">
+      <End Role="Region" EntitySet="Regions" />
+      <End Role="Territories" EntitySet="Territories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tasks_Tasks" Association="SampleModel.FK_Tasks_Tasks">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="Tasks1" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerCustomerDemo" Association="SampleModel.CustomerCustomerDemo">
+      <End Role="CustomerDemographics" EntitySet="CustomerDemographics" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeTerritories" Association="SampleModel.EmployeeTerritories">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Territories" EntitySet="Territories" />
+    </AssociationSet>
+    <EntitySet Name="Stocks" EntityType="SampleModel.Stock" />
+    <EntitySet Name="GanttDependencies" EntityType="SampleModel.GanttDependency" />
+    <EntitySet Name="GanttTasks" EntityType="SampleModel.GanttTask" />
+    <AssociationSet Name="FK_GanttTasks_GanttTasks" Association="SampleModel.FK_GanttTasks_GanttTasks">
+      <End Role="GanttTask" EntitySet="GanttTasks" />
+      <End Role="GanttTask1" EntitySet="GanttTasks" />
+    </AssociationSet>
+    <EntitySet Name="UrbanAreas" EntityType="SampleModel.UrbanArea" />
+    <EntitySet Name="EmployeeDirectory" EntityType="SampleModel.EmployeeDirectory" />
+    <AssociationSet Name="FK_EmployeeDirectory_EmployeeDirectory" Association="SampleModel.FK_EmployeeDirectory_EmployeeDirectory">
+      <End Role="EmployeeDirectory" EntitySet="EmployeeDirectory" />
+      <End Role="EmployeeDirectory1" EntitySet="EmployeeDirectory" />
+    </AssociationSet>
+    <EntitySet Name="GanttResourceAssignments" EntityType="SampleModel.GanttResourceAssignment" />
+    <EntitySet Name="GanttResources" EntityType="SampleModel.GanttResource" />
+    <EntitySet Name="OrgChartConnections" EntityType="SampleModel.OrgChartConnection" />
+    <EntitySet Name="OrgChartShapes" EntityType="SampleModel.OrgChartShape" />
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Products" Relationship="SampleModel.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="CustomerDemographic">
+    <Key>
+      <PropertyRef Name="CustomerTypeID" />
+    </Key>
+    <Property Name="CustomerTypeID" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="CustomerDesc" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Customers" Relationship="SampleModel.CustomerCustomerDemo" FromRole="CustomerDemographics" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="true" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="ContactName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="ContactTitle" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="Region" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Country" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="24" Unicode="true" FixedLength="false" />
+    <Property Name="Fax" Type="String" MaxLength="24" Unicode="true" FixedLength="false" />
+    <Property Name="Bool" Type="Boolean" />
+    <NavigationProperty Name="Orders" Relationship="SampleModel.FK_Orders_Customers" FromRole="Customers" ToRole="Orders" />
+    <NavigationProperty Name="CustomerDemographics" Relationship="SampleModel.CustomerCustomerDemo" FromRole="Customers" ToRole="CustomerDemographics" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Title" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="TitleOfCourtesy" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+    <Property Name="BirthDate" Type="DateTime" Precision="3" />
+    <Property Name="HireDate" Type="DateTime" Precision="3" />
+    <Property Name="Address" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="Region" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Country" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="HomePhone" Type="String" MaxLength="24" Unicode="true" FixedLength="false" />
+    <Property Name="Extension" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Notes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ReportsTo" Type="Int32" />
+    <Property Name="PhotoPath" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Employees1" Relationship="SampleModel.FK_Employees_Employees" FromRole="Employees" ToRole="Employees1" />
+    <NavigationProperty Name="Employee1" Relationship="SampleModel.FK_Employees_Employees" FromRole="Employees1" ToRole="Employees" />
+    <NavigationProperty Name="Orders" Relationship="SampleModel.FK_Orders_Employees" FromRole="Employees" ToRole="Orders" />
+    <NavigationProperty Name="Territories" Relationship="SampleModel.EmployeeTerritories" FromRole="Employees" ToRole="Territories" />
+  </EntityType>
+  <EntityType Name="Intraday">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Symbol" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Open" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="High" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="Low" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="Close" Type="Decimal" Nullable="false" Precision="9" Scale="3" />
+    <Property Name="Volume" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MeetingAttendee">
+    <Key>
+      <PropertyRef Name="MeetingID" />
+      <PropertyRef Name="AttendeeID" />
+    </Key>
+    <Property Name="MeetingID" Type="Int32" Nullable="false" />
+    <Property Name="AttendeeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Meeting" Relationship="SampleModel.FK_MeetingAttendee_Meeting" FromRole="MeetingAttendees" ToRole="Meetings" />
+  </EntityType>
+  <EntityType Name="Meeting">
+    <Key>
+      <PropertyRef Name="MeetingID" />
+    </Key>
+    <Property Name="MeetingID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="End" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="RoomID" Type="Int32" />
+    <Property Name="IsAllDay" Type="Boolean" Nullable="false" />
+    <Property Name="RecurrenceRule" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="RecurrenceID" Type="Int32" />
+    <Property Name="RecurrenceException" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="StartTimezone" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="EndTimezone" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="MeetingAttendees" Relationship="SampleModel.FK_MeetingAttendee_Meeting" FromRole="Meetings" ToRole="MeetingAttendees" />
+    <NavigationProperty Name="Meetings1" Relationship="SampleModel.FK_Meetings_Meetings" FromRole="Meetings" ToRole="Meetings1" />
+    <NavigationProperty Name="Meeting1" Relationship="SampleModel.FK_Meetings_Meetings" FromRole="Meetings1" ToRole="Meetings" />
+  </EntityType>
+  <EntityType Name="Order_Detail">
+    <Key>
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="Quantity" Type="Int16" Nullable="false" />
+    <Property Name="Discount" Type="Single" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="SampleModel.FK_Order_Details_Orders" FromRole="Order_Details" ToRole="Orders" />
+    <NavigationProperty Name="Product" Relationship="SampleModel.FK_Order_Details_Products" FromRole="Order_Details" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="String" MaxLength="5" Unicode="true" FixedLength="true" />
+    <Property Name="EmployeeID" Type="Int32" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="RequiredDate" Type="DateTime" Precision="3" />
+    <Property Name="ShippedDate" Type="DateTime" Precision="3" />
+    <Property Name="ShipVia" Type="Int32" />
+    <Property Name="Freight" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="ShipName" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="ShipAddress" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="ShipCity" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="ShipRegion" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="ShipPostalCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="ShipCountry" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Customer" Relationship="SampleModel.FK_Orders_Customers" FromRole="Orders" ToRole="Customers" />
+    <NavigationProperty Name="Employee" Relationship="SampleModel.FK_Orders_Employees" FromRole="Orders" ToRole="Employees" />
+    <NavigationProperty Name="Order_Details" Relationship="SampleModel.FK_Order_Details_Orders" FromRole="Orders" ToRole="Order_Details" />
+    <NavigationProperty Name="Shipper" Relationship="SampleModel.FK_Orders_Shippers" FromRole="Orders" ToRole="Shippers" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="SupplierID" Type="Int32" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="QuantityPerUnit" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="UnitsInStock" Type="Int16" />
+    <Property Name="UnitsOnOrder" Type="Int16" />
+    <Property Name="ReorderLevel" Type="Int16" />
+    <Property Name="Discontinued" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="SampleModel.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="Order_Details" Relationship="SampleModel.FK_Order_Details_Products" FromRole="Products" ToRole="Order_Details" />
+    <NavigationProperty Name="Supplier" Relationship="SampleModel.FK_Products_Suppliers" FromRole="Products" ToRole="Suppliers" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="RegionID" />
+    </Key>
+    <Property Name="RegionID" Type="Int32" Nullable="false" />
+    <Property Name="RegionDescription" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="Territories" Relationship="SampleModel.FK_Territories_Region" FromRole="Region" ToRole="Territories" />
+  </EntityType>
+  <EntityType Name="Shipper">
+    <Key>
+      <PropertyRef Name="ShipperID" />
+    </Key>
+    <Property Name="ShipperID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="24" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Orders" Relationship="SampleModel.FK_Orders_Shippers" FromRole="Shippers" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="ContactName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="ContactTitle" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="Region" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Country" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="24" Unicode="true" FixedLength="false" />
+    <Property Name="Fax" Type="String" MaxLength="24" Unicode="true" FixedLength="false" />
+    <Property Name="HomePage" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Products" Relationship="SampleModel.FK_Products_Suppliers" FromRole="Suppliers" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Name="TaskID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="End" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="OwnerID" Type="Int32" />
+    <Property Name="IsAllDay" Type="Boolean" Nullable="false" />
+    <Property Name="RecurrenceRule" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="RecurrenceID" Type="Int32" />
+    <Property Name="RecurrenceException" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="StartTimezone" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="EndTimezone" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Tasks1" Relationship="SampleModel.FK_Tasks_Tasks" FromRole="Tasks" ToRole="Tasks1" />
+    <NavigationProperty Name="Task1" Relationship="SampleModel.FK_Tasks_Tasks" FromRole="Tasks1" ToRole="Tasks" />
+  </EntityType>
+  <EntityType Name="Territory">
+    <Key>
+      <PropertyRef Name="TerritoryID" />
+    </Key>
+    <Property Name="TerritoryID" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="TerritoryDescription" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="RegionID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Region" Relationship="SampleModel.FK_Territories_Region" FromRole="Territories" ToRole="Region" />
+    <NavigationProperty Name="Employees" Relationship="SampleModel.EmployeeTerritories" FromRole="Territories" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Weather">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Station" />
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="TMax" />
+      <PropertyRef Name="TMin" />
+      <PropertyRef Name="Wind" />
+      <PropertyRef Name="Rain" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Station" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TMax" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="TMin" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="Wind" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="Gust" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Rain" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="Snow" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Events" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Products_Categories">
+    <End Role="Categories" Type="SampleModel.Category" Multiplicity="0..1" />
+    <End Role="Products" Type="SampleModel.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Customers">
+    <End Role="Customers" Type="SampleModel.Customer" Multiplicity="0..1" />
+    <End Role="Orders" Type="SampleModel.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Employees">
+    <End Role="Employees" Type="SampleModel.Employee" Multiplicity="0..1" />
+    <End Role="Employees1" Type="SampleModel.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Employees1">
+        <PropertyRef Name="ReportsTo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Employees">
+    <End Role="Employees" Type="SampleModel.Employee" Multiplicity="0..1" />
+    <End Role="Orders" Type="SampleModel.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MeetingAttendee_Meeting">
+    <End Role="Meetings" Type="SampleModel.Meeting" Multiplicity="1" />
+    <End Role="MeetingAttendees" Type="SampleModel.MeetingAttendee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Meetings">
+        <PropertyRef Name="MeetingID" />
+      </Principal>
+      <Dependent Role="MeetingAttendees">
+        <PropertyRef Name="MeetingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meetings_Meetings">
+    <End Role="Meetings" Type="SampleModel.Meeting" Multiplicity="0..1" />
+    <End Role="Meetings1" Type="SampleModel.Meeting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Meetings">
+        <PropertyRef Name="MeetingID" />
+      </Principal>
+      <Dependent Role="Meetings1">
+        <PropertyRef Name="RecurrenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Details_Orders">
+    <End Role="Orders" Type="SampleModel.Order" Multiplicity="1" />
+    <End Role="Order_Details" Type="SampleModel.Order_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="Order_Details">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Details_Products">
+    <End Role="Products" Type="SampleModel.Product" Multiplicity="1" />
+    <End Role="Order_Details" Type="SampleModel.Order_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Order_Details">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Shippers">
+    <End Role="Shippers" Type="SampleModel.Shipper" Multiplicity="0..1" />
+    <End Role="Orders" Type="SampleModel.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shippers">
+        <PropertyRef Name="ShipperID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="ShipVia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Suppliers">
+    <End Role="Suppliers" Type="SampleModel.Supplier" Multiplicity="0..1" />
+    <End Role="Products" Type="SampleModel.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suppliers">
+        <PropertyRef Name="SupplierID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="SupplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territories_Region">
+    <End Role="Region" Type="SampleModel.Region" Multiplicity="1" />
+    <End Role="Territories" Type="SampleModel.Territory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="RegionID" />
+      </Principal>
+      <Dependent Role="Territories">
+        <PropertyRef Name="RegionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tasks_Tasks">
+    <End Role="Tasks" Type="SampleModel.Task" Multiplicity="0..1" />
+    <End Role="Tasks1" Type="SampleModel.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="Tasks1">
+        <PropertyRef Name="RecurrenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerCustomerDemo">
+    <End Role="CustomerDemographics" Type="SampleModel.CustomerDemographic" Multiplicity="*" />
+    <End Role="Customers" Type="SampleModel.Customer" Multiplicity="*" />
+  </Association>
+  <Association Name="EmployeeTerritories">
+    <End Role="Employees" Type="SampleModel.Employee" Multiplicity="*" />
+    <End Role="Territories" Type="SampleModel.Territory" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Symbol" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="Date" Nullable="false" Precision="3" />
+    <Property Type="Decimal" Name="Open" Nullable="false" Precision="9" Scale="3" />
+    <Property Type="Decimal" Name="High" Nullable="false" Precision="9" Scale="3" />
+    <Property Type="Decimal" Name="Low" Nullable="false" Precision="9" Scale="3" />
+    <Property Type="Decimal" Name="Close" Nullable="false" Precision="9" Scale="3" />
+    <Property Type="Int64" Name="Volume" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GanttDependency">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PredecessorID" Nullable="false" />
+    <Property Type="Int32" Name="SuccessorID" Nullable="false" />
+    <Property Type="Int32" Name="Type" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GanttTask">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ParentID" />
+    <Property Type="Int32" Name="OrderID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="Start" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="End" Nullable="false" Precision="3" />
+    <Property Type="Decimal" Name="PercentComplete" Nullable="false" Precision="5" Scale="2" />
+    <Property Type="Boolean" Name="Expanded" Nullable="false" />
+    <NavigationProperty Name="GanttTasks1" Relationship="SampleModel.FK_GanttTasks_GanttTasks" FromRole="GanttTask" ToRole="GanttTask1" />
+    <NavigationProperty Name="GanttTask1" Relationship="SampleModel.FK_GanttTasks_GanttTasks" FromRole="GanttTask1" ToRole="GanttTask" />
+    <Property Type="Boolean" Name="Summary" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_GanttTasks_GanttTasks">
+    <End Type="SampleModel.GanttTask" Role="GanttTask" Multiplicity="0..1" />
+    <End Type="SampleModel.GanttTask" Role="GanttTask1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GanttTask">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GanttTask1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="UrbanArea">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="City" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Country" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="Latitude" Nullable="false" Precision="9" Scale="6" />
+    <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="9" Scale="6" />
+    <Property Type="String" Name="Country_ISO3" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="Pop1950" Nullable="false" />
+    <Property Type="Int32" Name="Pop1955" Nullable="false" />
+    <Property Type="Int32" Name="Pop1960" Nullable="false" />
+    <Property Type="Int32" Name="Pop1965" Nullable="false" />
+    <Property Type="Int32" Name="Pop1970" Nullable="false" />
+    <Property Type="Int32" Name="Pop1975" Nullable="false" />
+    <Property Type="Int32" Name="Pop1980" Nullable="false" />
+    <Property Type="Int32" Name="Pop1985" Nullable="false" />
+    <Property Type="Int32" Name="Pop1990" Nullable="false" />
+    <Property Type="Int32" Name="Pop1995" Nullable="false" />
+    <Property Type="Int32" Name="Pop2000" Nullable="false" />
+    <Property Type="Int32" Name="Pop2005" Nullable="false" />
+    <Property Type="Int32" Name="Pop2010" Nullable="false" />
+    <Property Type="Int32" Name="Pop2015" Nullable="false" />
+    <Property Type="Int32" Name="Pop2020" Nullable="false" />
+    <Property Type="Int32" Name="Pop2025" Nullable="false" />
+    <Property Type="Int32" Name="Pop2050" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeDirectory">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Type="Int32" Name="EmployeeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="FirstName" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LastName" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ReportsTo" />
+    <Property Type="String" Name="Address" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="City" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Country" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Phone" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Extension" />
+    <Property Type="DateTime" Name="BirthDate" Precision="3" />
+    <Property Type="DateTime" Name="HireDate" Precision="3" />
+    <Property Type="String" Name="Position" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EmployeeDirectory1" Relationship="SampleModel.FK_EmployeeDirectory_EmployeeDirectory" FromRole="EmployeeDirectory" ToRole="EmployeeDirectory1" />
+    <NavigationProperty Name="EmployeeDirectory2" Relationship="SampleModel.FK_EmployeeDirectory_EmployeeDirectory" FromRole="EmployeeDirectory1" ToRole="EmployeeDirectory" />
+  </EntityType>
+  <Association Name="FK_EmployeeDirectory_EmployeeDirectory">
+    <End Type="SampleModel.EmployeeDirectory" Role="EmployeeDirectory" Multiplicity="0..1" />
+    <End Type="SampleModel.EmployeeDirectory" Role="EmployeeDirectory1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeDirectory">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="EmployeeDirectory1">
+        <PropertyRef Name="ReportsTo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="GanttResourceAssignment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="TaskID" Nullable="false" />
+    <Property Type="Int32" Name="ResourceID" Nullable="false" />
+    <Property Type="Decimal" Name="Units" Nullable="false" Precision="5" Scale="2" />
+  </EntityType>
+  <EntityType Name="GanttResource">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Color" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="OrgChartConnection">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="FromShapeId" />
+    <Property Type="Int32" Name="ToShapeId" />
+    <Property Type="String" Name="Text" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="FromPointX" />
+    <Property Type="Int32" Name="FromPointY" />
+    <Property Type="Int32" Name="ToPointX" />
+    <Property Type="Int32" Name="ToPointY" />
+  </EntityType>
+  <EntityType Name="OrgChartShape">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="JobTitle" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Color" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

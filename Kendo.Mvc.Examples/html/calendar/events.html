@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+    
+        <div id="example">
+            <div class="demo-section k-header" style="width: 300px; text-align: center;">
+                <div id="calendar"></div>
+            </div>
+            <div class="box">
+                <h4>Events log</h4>
+                <div class="console"></div>
+            </div>
+
+            <script>
+                function onChange() {
+                    kendoConsole.log("Change :: " + kendo.toString(this.value(), 'd'));
+                }
+
+                function onNavigate() {
+                    kendoConsole.log("Navigate");
+                }
+
+                $("#calendar").kendoCalendar({
+                    change: onChange,
+                    navigate: onNavigate
+                });
+            </script>
+        </div>
+
+    
+</body>
+</html>

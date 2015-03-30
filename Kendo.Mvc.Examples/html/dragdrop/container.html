@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Container</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+    <div id="draggable-container">
+    <div id="draggable-item">Foo</div>
+</div>
+
+<style>
+    #draggable-container {
+        margin: 10px auto;
+        width: 200px;
+        height: 200px;
+        background: #eee;
+        padding: 10px;
+        border: 1px solid black;
+    }
+
+    #draggable-item {
+        width: 20px;
+        height: 20px;
+        padding: 10px;
+        border: 1px solid black;
+        margin: 5px;
+        background: #666;
+        color: white;
+    }
+</style>
+
+<script>
+    $("#draggable-item").kendoDraggable({
+        container: $("#draggable-container"),
+        hint: function() {
+            return $("#draggable-item").clone();
+        }
+    });
+</script>
+
+
+    
+</body>
+</html>
